@@ -1,6 +1,3 @@
-/*
- * Created by Edward on 4/15/2017
- */
 import java.util.Random;
 
 class Matrix {
