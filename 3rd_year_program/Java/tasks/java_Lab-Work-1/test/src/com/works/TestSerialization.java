@@ -1,14 +1,13 @@
 package com.works;
 
+import junit.framework.TestCase;
+
 import java.io.*;
 import java.util.LinkedList;
 
-public class TMain {
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+public class TestSerialization extends TestCase {
 
-        /*
-        TASK serializing as the whole object
-         */
+    public void testCheckSimilarityTask1() throws IOException, ClassNotFoundException {
         System.out.println("Task 1");
         // create linked list
         myLinkedList myList = new myLinkedList();
@@ -38,35 +37,23 @@ public class TMain {
         // close file (important!)
         in.close();
 
-        System.out.println("__BEFORE_SERIALIZATION__");
-        System.out.println(myList.toString());
-        System.out.println();
-        System.out.println("__AFTER_DESERIALIZATION__");
-        System.out.println(myNewList.toString());
+        assertEquals(myList.toString(), myNewList.toString());
+    }
 
-        /*
-        TASK serializing as the sequence of generic objects
-         */
-        System.out.println("\nTask 2");
-        // create two banks (Bank : base class, BankAlpha : derived)
+    public void testCheckSimilarityTask2() throws IOException, ClassNotFoundException {
         Bank a = new Bank("A", 1.3);
         Bank a1 = new Bank("B", 3.2);
-        BankAlpha b = new BankAlpha();
-        BankUkrSoc c = new BankUkrSoc();
-        // create two clients
-        Client cl1 = new Client("Mark", 1000);
-        Client cl2 = new Client("David", 502.3);
-        // add clients to the alpha bank
-        b.addClient(cl1);
-        b.addClient(cl2);
-        // add clients to the UkrSoc bank
-        c.addClient(cl1);
-        c.addClient(cl2);
+        Bank a2 = new Bank("C", 3.3);
+        Bank a3 = new Bank("D", 3.4);
+        Bank a4 = new Bank("E", 3.5);
         // initialize generic object
         BanksGeneric<Bank> myBank = new BanksGeneric<>();
         // set bank to generic class
         myBank.addBank(a);
         myBank.addBank(a1);
+        myBank.addBank(a2);
+        myBank.addBank(a3);
+        myBank.addBank(a4);
         // create stream
         ObjectOutputStream outb = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("outb.txt")));
         // write to file serialized data
@@ -81,16 +68,11 @@ public class TMain {
         // close file (important!)
         inb.close();
 
-        System.out.println("__BEFORE_SERIALIZATION__");
-        System.out.println(myBank.toString());
-        System.out.println();
-        System.out.println("__AFTER_DESERIALIZATION__");
-        System.out.println(myNewBank.toString());
+        assertEquals(myBank.toString(), myNewBank.toString());
 
-        /*
-        TASK serializing as the string
-         */
-        System.out.println("\nTask 3");
+    }
+
+    public void testCheckSimilarityTask3() throws IOException, ClassNotFoundException {
         LinkedList<Bank> banks = new LinkedList<>();
 
         Bank a_ = new Bank("A", 1.1);
@@ -108,9 +90,6 @@ public class TMain {
         o.write_to("outs.txt");
         String s = o.read_from("outs.txt");
 
-        System.out.println("__BEFORE_SERIALIZATION__");
-        System.out.println(banks.toString());
-        System.out.println("__AFTER_DESERIALIZATION__");
-        System.out.println(s);
+        assertEquals(banks.toString(), s);
     }
 }

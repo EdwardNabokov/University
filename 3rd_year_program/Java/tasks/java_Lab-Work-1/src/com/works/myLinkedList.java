@@ -2,14 +2,13 @@ package com.works;
 
 import java.io.*;
 
-class LinkedList implements Serializable {
+class myLinkedList implements Serializable {
 
     private static int size;
+
     private Node root;
-
     //constructor for linked list
-    LinkedList() {}
-
+    myLinkedList() {}
     // appends the specified element to the end of list.
     void add(Object data) {
 
@@ -86,32 +85,28 @@ class LinkedList implements Serializable {
         if (root != null) {
             Node currentNode = root.getNext();
             while (currentNode != null) {
-                output +=  currentNode.getData().toString() + ", ";
+                output +=  currentNode.getData().toString() + " ";
                 currentNode = currentNode.getNext();
             }
 
         }
         return output;
     }
-
     // define writeObject from Serializable interface
     private void writeObject(ObjectOutputStream out) throws IOException {
 
         for(int i=0; i < this.getSize(); i++){
-            System.out.println("To write: " + this.get(i));
             out.writeObject(this.get(i));
         }
 
     }
-
     // define readObject from Serializable interface
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-        LinkedList tempList = new LinkedList();
+        myLinkedList tempList = new myLinkedList();
         try {
             Object c;
             while (true) {
               c = in.readObject();
-              System.out.println("Read from: " + c);
               tempList.add(c);
             }
 
@@ -128,16 +123,13 @@ class LinkedList implements Serializable {
     private class Node {
         // reference to the next node in the chain, or null if there isn't one.
         Node next;
-
         // data carried by this node. could be of any type you need.
         Object data;
-
         // Node constructor
         Node(Object value) {
             next = null;
             data = value;
         }
-
         // these methods should be self-explanatory
         Object getData() {
             return data;
@@ -152,7 +144,5 @@ class LinkedList implements Serializable {
         }
 
     }
-
-
 
 }
