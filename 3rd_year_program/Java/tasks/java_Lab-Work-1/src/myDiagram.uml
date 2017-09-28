@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="38.5" y="704.0">banks.BankUkrSoc</node>
+    <node x="762.5" y="764.0">banks.Banks</node>
+    <node x="1119.5" y="1440.0">serializers.TMain</node>
+    <node x="1162.6434461805552" y="512.0">myCollection.myLinkedList</node>
+    <node x="1579.6434461805552" y="704.0">banks.BankTempoo</node>
+    <node x="364.71028645833326" y="0.0">banks.Client</node>
+    <node x="1029.5" y="1194.0">serializers.Serializer</node>
+    <node x="400.5" y="704.0">banks.BankAlpha</node>
+    <node x="849.4602864583333" y="232.0">banks.Bank</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="serializers.TMain" target="banks.BankAlpha">
+      <point x="-44.44444444444446" y="-28.0" />
+      <point x="1175.0555555555557" y="1400.0" />
+      <point x="571.5" y="1400.0" />
+      <point x="0.0" y="124.0" />
+    </edge>
+    <edge source="serializers.TMain" target="banks.Bank">
+      <point x="-22.22222222222223" y="-28.0" />
+      <point x="1197.2777777777778" y="1390.0" />
+      <point x="1019.0" y="1390.0" />
+      <point x="1019.0" y="492.0" />
+      <point x="1020.4602864583333" y="492.0" />
+      <point x="0.0" y="100.0" />
+    </edge>
+    <edge source="myCollection.myLinkedList" target="banks.Bank">
+      <point x="-99.25" y="-316.0" />
+      <point x="1261.8934461805552" y="492.0" />
+      <point x="1096.4602864583333" y="492.0" />
+      <point x="76.0" y="100.0" />
+    </edge>
+    <edge source="banks.BankUkrSoc" target="banks.Client">
+      <point x="42.75" y="-124.0" />
+      <point x="252.25" y="492.0" />
+      <point x="206.7684461805552" y="492.0" />
+      <point x="206.7684461805552" y="212.0" />
+      <point x="464.46028645833326" y="212.0" />
+      <point x="-71.25" y="76.0" />
+    </edge>
+    <edge source="serializers.Serializer" target="banks.Bank">
+      <point x="-126.66666666666669" y="-88.0" />
+      <point x="1092.8333333333333" y="1169.0" />
+      <point x="1053.185112847222" y="1169.0" />
+      <point x="1053.185112847222" y="492.0" />
+      <point x="1058.4602864583333" y="492.0" />
+      <point x="38.0" y="100.0" />
+    </edge>
+    <edge source="serializers.TMain" target="banks.BankUkrSoc">
+      <point x="-66.66666666666669" y="-28.0" />
+      <point x="1152.8333333333333" y="1410.0" />
+      <point x="209.5" y="1410.0" />
+      <point x="0.0" y="124.0" />
+    </edge>
+    <edge source="banks.BankTempoo" target="banks.Bank">
+      <point x="-128.25" y="-124.0" />
+      <point x="1622.3934461805552" y="472.0" />
+      <point x="1172.460286458333" y="472.0" />
+      <point x="151.99999999999994" y="100.0" />
+    </edge>
+    <edge source="banks.BankAlpha" target="banks.Bank">
+      <point x="128.25" y="-124.0" />
+      <point x="699.75" y="472.0" />
+      <point x="906.4602864583333" y="472.0" />
+      <point x="-114.0" y="100.0" />
+    </edge>
+    <edge source="serializers.TMain" target="banks.BankTempoo">
+      <point x="66.66666666666663" y="-28.0" />
+      <point x="1286.1666666666665" y="1410.0" />
+      <point x="1750.6434461805552" y="1410.0" />
+      <point x="0.0" y="124.0" />
+    </edge>
+    <edge source="banks.BankUkrSoc" target="banks.Bank">
+      <point x="128.25" y="-124.0" />
+      <point x="337.75" y="462.0" />
+      <point x="868.4602864583333" y="462.0" />
+      <point x="-152.0" y="100.0" />
+    </edge>
+    <edge source="serializers.Serializer" target="myCollection.myLinkedList">
+      <point x="126.66666666666663" y="-88.0" />
+      <point x="1346.1666666666665" y="1169.0" />
+      <point x="1311.5184461805552" y="1169.0" />
+      <point x="-49.625" y="316.0" />
+    </edge>
+    <edge source="serializers.TMain" target="banks.Client">
+      <point x="88.88888888888891" y="-28.0" />
+      <point x="1308.388888888889" y="1420.0" />
+      <point x="1932.1434461805552" y="1420.0" />
+      <point x="1932.1434461805552" y="172.0" />
+      <point x="692.4602864583333" y="172.0" />
+      <point x="156.75" y="76.0" />
+    </edge>
+    <edge source="serializers.TMain" target="serializers.Serializer">
+      <point x="0.0" y="-28.0" />
+      <point x="0.0" y="88.0" />
+    </edge>
+    <edge source="banks.BankTempoo" target="banks.Client">
+      <point x="-42.75" y="-124.0" />
+      <point x="1707.8934461805552" y="492.0" />
+      <point x="1762.9867621527778" y="492.0" />
+      <point x="1762.9867621527778" y="202.0" />
+      <point x="606.9602864583333" y="202.0" />
+      <point x="71.25" y="76.0" />
+    </edge>
+    <edge source="banks.Banks" target="banks.Bank">
+      <point x="-61.5" y="-64.0" />
+      <point x="824.0" y="482.0" />
+      <point x="944.4602864583333" y="482.0" />
+      <point x="-76.0" y="100.0" />
+    </edge>
+    <edge source="banks.BankAlpha" target="banks.Client">
+      <point x="-128.25" y="-124.0" />
+      <point x="443.25" y="452.0" />
+      <point x="519.2102864583333" y="452.0" />
+      <point x="519.2102864583333" y="212.0" />
+      <point x="492.96028645833326" y="212.0" />
+      <point x="-42.75" y="76.0" />
+    </edge>
+    <edge source="serializers.TMain" target="myCollection.myLinkedList">
+      <point x="22.22222222222223" y="-28.0" />
+      <point x="1241.7222222222222" y="1390.0" />
+      <point x="1420.0" y="1390.0" />
+      <point x="1420.0" y="1169.0" />
+      <point x="1410.7684461805552" y="1169.0" />
+      <point x="49.625" y="316.0" />
+    </edge>
+    <edge source="banks.Bank" target="banks.Client">
+      <point x="-5.6843418860808015E-14" y="-100.0" />
+      <point x="1020.4602864583331" y="212.0" />
+      <point x="578.4602864583333" y="212.0" />
+      <point x="42.75" y="76.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="767.8571428571427" y="491.71428571428567" />
+  <SelectedNodes>
+    <node>myCollection.myLinkedList</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

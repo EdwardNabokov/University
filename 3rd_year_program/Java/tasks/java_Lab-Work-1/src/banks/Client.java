@@ -1,4 +1,4 @@
-package com.works;
+package banks;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -43,6 +43,6 @@ public class Client implements Serializable {
     }
 
     public String toString() {
-        return String.format("Client name: %s\nDesired money: %s", this.myName, this.wantMoney);
+        return String.format("[ 'data': [%s, %s]", this.myName, this.wantMoney);
     }
 }
