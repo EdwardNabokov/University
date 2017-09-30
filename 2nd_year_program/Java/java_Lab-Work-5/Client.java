@@ -1,7 +1,3 @@
-
-/**
- * Created by Edward on 5/22/2017
- */
 public class Client {
     public String myName;
     public double wantMoney = 0;

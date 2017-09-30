@@ -1,6 +1,3 @@
-/**
- * Created by Edward on 5/23/2017
- */
 public class BankUkrSoc extends Bank{
     protected Client[] clients = new Client[2];
     public double time = 1.5;
