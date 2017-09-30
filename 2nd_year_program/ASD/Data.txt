@@ -1,0 +1,10 @@
+Nastya A 22 04 1998 4 4 5
+Vlad	B 21 02 1997 3 2 5
+Mariya	C 03 05 1998 5 3 4
+Katya D 05 10 1998 3 3 3
+Lina E 10 10 1995 5 5 5
+Lina Q 13 09 2001 4 5 4
+Katya W 06 07 1997 3 4 2
+Bogdan F 02 01 1998 5 3 4
+Andrew S 24 05 1997 3 4 2
+Mariya I 12 03 1996 4 5 3
