@@ -1,6 +1,3 @@
-/**
- * Created by Edward on 5/23/2017
- */
 public class BankTempoo extends Bank {
     protected Client[] clients = new Client[4];
     public double time = 1.1;
