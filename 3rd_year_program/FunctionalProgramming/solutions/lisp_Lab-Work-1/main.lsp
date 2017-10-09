@@ -23,10 +23,11 @@
 	DEFUN DISCRIMINANT (a b c)
 			(setq VAR (- (* b b) (* 4 a c)))
 			(
-				COND ((> VAR 0) VAR)
+				COND ((> VAR 0) (SQRT VAR))
 						 ((<= 0) (string "It's not possible"))
 			)
 )
 
 (print (DISCRIMINANT 1 5 3))
 (print (DISCRIMINANT 1 2 1))
+(print (DISCRIMINANT 4 -5 1))
