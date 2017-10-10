@@ -1,7 +1,7 @@
-package serializers;
+package com.solutions.labwork1.serializers;
 
-import banks.*;
-import myCollection.*;
+import com.solutions.labwork1.banks.*;
+import com.solutions.labwork1.myCollection.*;
 
 import junit.framework.TestCase;
 

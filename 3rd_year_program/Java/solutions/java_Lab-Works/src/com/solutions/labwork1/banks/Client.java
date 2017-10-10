@@ -1,4 +1,4 @@
-package banks;
+package com.solutions.labwork1.banks;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

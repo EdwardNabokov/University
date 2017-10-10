@@ -1,8 +1,8 @@
-package serializers;
+package com.solutions.labwork1.serializers;
 
-import banks.Bank;
+import com.solutions.labwork1.banks.Bank;
 import com.google.gson.Gson;
-import myCollection.myLinkedList;
+import com.solutions.labwork1.myCollection.myLinkedList;
 
 import java.io.*;
 

@@ -1,4 +1,4 @@
-package banks;
+package com.solutions.labwork1.banks;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class Banks {
         banks.remove(bank);
     }
 
-    // print out all banks that are in array list
+    // print out all com.solutions.labwork1.banks that are in array list
     void printAll(){
         System.out.println("Banks: ");
         for (Bank b : this.banks){

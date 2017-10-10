@@ -1,9 +1,9 @@
-package serializers;
+package com.solutions.labwork1.serializers;
 
 import java.io.*;
 
-import myCollection.*;
-import banks.*;
+import com.solutions.labwork1.myCollection.*;
+import com.solutions.labwork1.banks.*;
 
 public class TMain {
     public static void main(String[] args) throws IOException {

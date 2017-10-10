@@ -1,4 +1,4 @@
-package banks;
+package com.solutions.labwork1.banks;
 
 import junit.framework.TestCase;
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Project" default="all">
+    <target name="make.dirs" description="Make some dir">
+        <mkdir dir="build"/>
+        <mkdir dir="build/class"/>
+    </target>
+
+    <target name="compile" description="compile java"  depends="make.dirs">
+        <javac destdir="build/class">
+            <src path="src"/>
+        </javac>
+    </target>
+
+    <target name="all" description="Do the entire build" depends="compile" >
+        <echo>I'm building my project</echo>
+    </target>
+
+    <target name="clean" description="Cleaning up">
+        <echo>I'm cleaning up</echo>
+        <delete dir="build"/>
+    </target>
+</project>

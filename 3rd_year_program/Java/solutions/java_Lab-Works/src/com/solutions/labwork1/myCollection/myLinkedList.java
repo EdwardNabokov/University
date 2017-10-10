@@ -1,6 +1,6 @@
-package myCollection;
+package com.solutions.labwork1.myCollection;
 
-import banks.*;
+import com.solutions.labwork1.banks.*;
 import java.util.*;
 import java.io.Serializable;
 
