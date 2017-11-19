@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="365.0" y="824.0">com.solutions.labwork1.banks.Bank</node>
+    <node x="0.0" y="1100.0">com.solutions.labwork1.banks.BankUkrSoc</node>
+    <node x="0.0" y="1515.0">com.solutions.labwork1.banks.Banks</node>
+    <node x="1125.0" y="824.0">com.solutions.labwork1.banks.Client</node>
+    <node x="0.0" y="0.0">com.solutions.labwork1.myCollection.myLinkedList</node>
+    <node x="716.0" y="1515.0">com.solutions.labwork1.serializers.TMain</node>
+    <node x="365.0" y="1111.5">com.solutions.labwork1.banks.BankAlpha</node>
+    <node x="727.0" y="1111.5">com.solutions.labwork1.banks.BankTempoo</node>
+    <node x="291.0" y="1515.0">com.solutions.labwork1.serializers.Serializer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.solutions.labwork1.banks.BankUkrSoc" target="com.solutions.labwork1.banks.Bank">
+      <point x="0.0" y="-185.0" />
+      <point x="172.5" y="1075.0" />
+      <point x="422.0" y="1075.0" />
+      <point x="-114.0" y="113.0" />
+    </edge>
+    <edge source="com.solutions.labwork1.banks.BankAlpha" target="com.solutions.labwork1.banks.Bank">
+      <point x="0.0" y="-173.5" />
+      <point x="0.0" y="113.0" />
+    </edge>
+    <edge source="com.solutions.labwork1.banks.BankTempoo" target="com.solutions.labwork1.banks.Bank">
+      <point x="0.0" y="-173.5" />
+      <point x="903.5" y="1075.0" />
+      <point x="650.0" y="1075.0" />
+      <point x="114.0" y="113.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="609.2857142857142" y="432.71428571428567" />
+  <SelectedNodes>
+    <node>com.solutions.labwork1.serializers.Serializer</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
