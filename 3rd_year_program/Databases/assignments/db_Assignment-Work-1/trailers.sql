@@ -14,7 +14,7 @@ CREATE TABLE auto_brands (
 );
 
 -- add data to auto brands
-COPY auto_brands (brand) FROM '/home/edward/Documents/Education/KPI/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/brands.csv'
+COPY auto_brands (brand) FROM '/Users/eduardnabokov/Documents/education/University/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/brands.csv'
   WITH (FORMAT csv);
 
 -- Create table with all garages' numbers (just their numbers)
@@ -24,7 +24,7 @@ CREATE TABLE garages (
 );
 
 -- add data to garages
-COPY garages (num) FROM '/home/edward/Documents/Education/KPI/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/garages.csv'
+COPY garages (num) FROM '/Users/eduardnabokov/Documents/education/University/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/garages.csv'
   WITH (FORMAT csv);
 
 /* Create table with
@@ -39,7 +39,7 @@ CREATE TABLE mending_type (
 
 -- add data to mending_type
 COPY mending_type (types_code, types_name)
-  FROM '/home/edward/Documents/Education/KPI/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/mend_type.csv' WITH (FORMAT csv);
+  FROM '/Users/eduardnabokov/Documents/education/University/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/mend_type.csv' WITH (FORMAT csv);
 
 /* Create table with:
 * - unique number of car
@@ -57,7 +57,7 @@ CREATE TABLE trailers_park (
 
 -- add data to trailers_park
 COPY trailers_park (auto_num, auto_brand, release_date, garage_number)
-  FROM '/home/edward/Documents/Education/KPI/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/trailers_park_data.csv' WITH (FORMAT csv);
+  FROM '/Users/eduardnabokov/Documents/education/University/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/trailers_park_data.csv' WITH (FORMAT csv);
 
 /* Create table with:
 * - unique id for each mechanic
@@ -79,7 +79,7 @@ CREATE TABLE staff (
 
 -- add data to staff
 COPY staff (mechanic_id, surname, ipb, garage_number, start_date, end_date, salary)
-  FROM '/home/edward/Documents/Education/KPI/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/staff.csv' WITH (FORMAT csv);
+  FROM '/Users/eduardnabokov/Documents/education/University/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/staff.csv' WITH (FORMAT csv);
 
 /* Create table with:
 * - date of repairs, when it was done (or is going to be)
@@ -97,4 +97,4 @@ CREATE TABLE repairs (
 
 -- add data to staff
 COPY repairs (rdate, auto_num, mechanic_id, types_code)
-  FROM '/home/edward/Documents/Education/KPI/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/repairs.csv' WITH (FORMAT csv);
+  FROM '/Users/eduardnabokov/Documents/education/University/3rd_year_program/Databases/assignments/db_Assignment-Work-1/data/repairs.csv' WITH (FORMAT csv);
