@@ -1,0 +1,258 @@
+-- TASK ONE
+
+-- import from csv to mongo
+mongoimport -d admin -c auto_brand_from_csv --type csv --file auto_brands_copy.csv --headerline
+mongoimport -d admin -c mending_type_from_csv --type csv --file mending_type_copy.csv --headerline
+mongoimport -d admin -c repairs_from_csv --type csv --file repairs_copy.csv --headerline
+mongoimport -d admin -c staff_from_csv --type csv --file staff_copy.csv --headerline
+mongoimport -d admin -c trailers_park_from_csv --type csv --file trailers_park_copy.csv --headerline
+mongoimport -d admin -c garages_from_csv --type csv --file garages_copy.csv --headerline
+
+-- DENORMALIZATION
+db.trailers_park_from_csv.find().snapshot().forEach(
+  function (e) {
+    // update document, using its own properties
+    var new_brand = db.auto_brand_from_csv.findOne({'id': e.auto_brand}).brand;
+    e.auto_brand = new_brand;
+
+    var gar_num = db.garages_from_csv.findOne({'id': e.garage_number}).num;
+    e.garage_number = gar_num;
+
+    // save the updated document
+    db.trailers_park_from_csv.save(e);
+  }
+)
+
+db.repairs_from_csv.find().snapshot().forEach(
+  function (e) {
+    // update document, using its own properties
+    var type_code = db.mending_type_from_csv.findOne({'id': e.types_code}).types_name;
+    e.types_code = type_code;
+
+    // save the updated document
+    db.repairs_from_csv.save(e);
+  }
+)
+
+db.repairs_from_csv.find().snapshot().forEach(
+  function(e) {
+    var type_codes = ['Small fixes', 'Middle fixes', 'Large fixes', 'Repair wheels', 'Recolor', 'Improve handle', 'Paint wheels', 'Paint base', 'Inside cleaning',
+    'Outside cleaning', 'Full cleaning'];
+
+    var c1 = Math.floor(Math.random() * type_codes.length);
+    var c2 = Math.floor(Math.random() * type_codes.length);
+    var c3 = Math.floor(Math.random() * type_codes.length);
+    current_code = type_codes[c1];
+
+    e.types_code = [type_codes[c1], type_codes[c2], type_codes[c3]];
+    db.repairs_from_csv.save(e);
+  }
+)
+
+
+-- TASK TWO
+
+-- count documents
+db.staff_from_csv.aggregate([
+  {
+    $group : {
+      _id: null,
+      count: {$sum: 1}
+    }
+  },
+])
+
+
+-- group by surname and count ids (push them to the list)
+db.staff_from_csv.aggregate([
+  {
+    $group : {
+     _id: "$surname",
+     ids: {$push: "$id"}
+    }
+  },
+  {
+    $sort : {
+      _id: -1
+    }
+  }
+])
+
+-- group by garage and find total income
+db.staff_from_csv.aggregate([
+  {
+    $group: {
+      _id: "$garage_number",
+      income: {$avg: "$salary"}
+    }
+  },
+  {
+    $sort: {
+      _id: 1
+    }
+  }
+])
+
+-- join to trailer_park_data by id and sort by brand
+db.repairs_from_csv.aggregate([
+  {
+    $lookup:
+      {
+        from: "trailers_park_from_csv",
+        localField: "auto_num",
+        foreignField: "id",
+        as: "auto_num_id"
+      }
+  },
+  {
+    $project:
+      {
+        "_id": "$_id",
+        "repair_date": "$rdate",
+        "auto_brand": "$auto_num_id.auto_brand",
+        "auto_num": "$auto_num_id.auto_num",
+        "repairs": "$types_code"
+      }
+  },
+  {$unwind: "$auto_brand"},
+  {$unwind: "$auto_num"},
+  {
+    $sort: { "auto_brand": 1 }
+  }
+])
+
+
+-- output mechanic and car. Print out also if car was cleaned. Count total salary and split on categories
+db.repairs_from_csv.aggregate([
+  {
+    $lookup: {
+      from: "trailers_park_from_csv",
+      localField: "auto_num",
+      foreignField: "id",
+      as: "auto"
+    }
+  },
+  {
+    $lookup: {
+      from: "staff_from_csv",
+      localField: "mechanic_id",
+      foreignField: "id",
+      as: "mechanic"
+    }
+  },
+  {
+    $project: {
+      "mechanic": "$mechanic.surname",
+      "salary": "$mechanic.salary",
+      "car": "$auto.auto_brand",
+      "was_fully_cleaned": {
+        $in : ["Full cleaning", "$types_code"]
+      }
+    }
+  },
+  {$unwind: "$mechanic"},
+  {$unwind: "$car"},
+  {$unwind: "$salary"},
+  {
+    $bucket:  {
+      groupBy: "$salary",
+      boundaries: [0, 200, 300, 600, 750, 800, 1000, 1300, 1500, 2000],
+      default: "Other",
+      output: {
+        "count": { $sum: 1 },
+        "mechanics": { $addToSet: "$mechanic" },
+        "cars": { $addToSet: "$car" },
+        "total_salary": { $sum: "$salary"}
+      }
+    }
+  }
+])
+
+
+-- TASK THREE
+----total salary per mechanic
+var mapFunction = function() {
+   emit(this._id, this.salary);
+};
+
+var reduceFunction = function(id, salary) {
+   return Array.sum(salary);
+};
+
+db.staff_from_csv.mapReduce(
+                   mapFunction,
+                   reduceFunction,
+                   { out: "map_reduce_result" }
+                 )
+
+-- one more query
+var mapFoo = function() {
+
+  for (var i = 0; i < this.types_code.length; i++){
+    var key = this.types_code[i];
+    var value = {
+      count: 1
+    }
+    emit(key, value);
+  }
+};
+
+var reduceFoo = function(key, values){
+  var reducedObject = {count: 0};
+
+  for (var i = 0; i < values.length; i++){
+      reducedObject.count += values[i].count;
+  }
+
+  return reducedObject;
+};
+
+var finalizer = function(key, reducer) {
+  return reducer;
+}
+
+db.repairs_from_csv.mapReduce(
+   mapFoo,
+   reduceFoo,
+   {
+    out: {merge: "map_reduce_date" },
+    finalize: finalizer
+   }
+)
+
+--- ONE MORE QUERY
+
+var mapperFoo = function(){
+  for (var i = 0; i < 50; i++){
+    var key = this.id;
+    var value = {
+        count: 1,
+        salary: this.salary
+    }
+    emit(key, value);
+  }
+}
+
+var reducerFoo = function(key, values){
+  var reduced = {count: 0, salary: 0};
+
+  for (var i = 0; i < values.length; i++){
+      reduced.count += values[i].count;
+      reduced.salary += values[i].salary;
+  }
+
+  return reduced;
+};
+
+var finalizer = function(key, reducer) {
+  return reducer;
+}
+
+db.staff_from_csv.mapReduce(
+  mapperFoo,
+  reducerFoo,
+  {
+    out: {merge: "map_reduce_salary" },
+    finalize: finalizer
+  }
+)

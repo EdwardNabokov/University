@@ -1,0 +1,101 @@
+{
+    "_id": 30,
+    "rdate": "19.4.61",
+    "auto_num_id": 0,
+    "mechanic_id": 20,
+    "types_code": [
+        "Paint wheels",
+        "Large fixes",
+        "Improve handle"
+    ]
+},{
+    "_id": 31,
+    "rdate": "20.1.56",
+    "auto_num_id": 1,
+    "mechanic_id": 21,
+    "types_code": [
+        "Outside cleaning",
+        "Repair wheels",
+        "Inside cleaning"
+    ]
+},{
+    "_id": 32,
+    "rdate": "12.3.50",
+    "auto_num_id": 2,
+    "mechanic_id": 22,
+    "types_code": [
+        "Middle fixes",
+        "Recolor",
+        "Small fixes"
+    ]
+},{
+    "_id": 33,
+    "rdate": "9.11.12",
+    "auto_num_id": 3,
+    "mechanic_id": 23,
+    "types_code": [
+        "Large fixes",
+        "Improve handle",
+        "Full cleaning"
+    ]
+},{
+    "_id": 34,
+    "rdate": "17.2.13",
+    "auto_num_id": 4,
+    "mechanic_id": 24,
+    "types_code": [
+        "Middle fixes",
+        "Paint wheels",
+        "Recolor"
+    ]
+},{
+    "_id": 35,
+    "rdate": "25.6.16",
+    "auto_num_id": 5,
+    "mechanic_id": 25,
+    "types_code": [
+        "Small fixes",
+        "Full cleaning",
+        "Paint base"
+    ]
+},{
+    "_id": 36,
+    "rdate": "7.3.13",
+    "auto_num_id": 6,
+    "mechanic_id": 26,
+    "types_code": [
+        "Full cleaning",
+        "Large fixes",
+        "Inside cleaning"
+    ]
+},{
+    "_id": 37,
+    "rdate": "9.2.88",
+    "auto_num_id": 7,
+    "mechanic_id": 27,
+    "types_code": [
+        "Repair wheels",
+        "Paint base",
+        "Large fixes"
+    ]
+},{
+    "_id": 38,
+    "rdate": "9.1.51",
+    "auto_num_id": 8,
+    "mechanic_id": 28,
+    "types_code": [
+        "Full cleaning",
+        "Outside cleaning",
+        "Middle fixes"
+    ]
+},{
+    "_id": 39,
+    "rdate": "15.5.9",
+    "auto_num_id": 9,
+    "mechanic_id": 29,
+    "types_code": [
+        "Outside cleaning",
+        "Outside cleaning",
+        "Outside cleaning"
+    ]
+},
