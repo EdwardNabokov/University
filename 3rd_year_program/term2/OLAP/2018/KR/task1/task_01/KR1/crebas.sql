@@ -5,11 +5,9 @@
 /*==============================================================*/
 
 
-drop table INVOICE cascade constraints;
-
-drop table SALES cascade constraints;
-
-drop table STORE cascade constraints;
+drop table INVOICE;
+drop table SALES;
+drop table STORE;
 
 /*==============================================================*/
 /* Database: SALE                                               */
@@ -30,15 +28,6 @@ create table INVOICE  (
    PRICE                varchar2(128),
    INVOICE_DATE         varchar2(128)
 );
-
-comment on table INVOICE is
-'Інформація про розрахунок.';
-
-comment on column INVOICE.ID_STUFF is
-'Унікальний ідентифікатор оплати.';
-
-comment on column INVOICE.E_MAIL is
-'Час виконання оплати.';
 
 /*==============================================================*/
 /* Table: SALES                                                 */
@@ -61,29 +50,6 @@ create table SALES  (
    SOLD_IN_DECEMBER_2013 VARCHAR2(128)
 );
 
-comment on table SALES is
-'Інофрмація про продажі.';
-
-comment on column SALES.ID_STUFF is
-'Унікальний ідентифікатор товару.';
-
-comment on column SALES.STAFF_NAME is
-'Назва товару.';
-
-comment on column SALES.PRODUCT is
-'Одиниця виміру.';
-
-comment on column SALES.SOLD_IN_JANUARY_2013 is
-'Опис товару.';
-
-comment on column SALES.SOLD_IN_FEBRUARY_2013 is
-'Ціна товару.';
-
-comment on column SALES.SOLD_IN_MARCH_2013 is
-'Постачальник.';
-
-comment on column SALES.SOLD_IN_APRIL_2013 is
-'Тип товару.';
 
 /*==============================================================*/
 /* Table: STORE                                                 */
@@ -97,16 +63,3 @@ create table STORE  (
    OPER_TYPE            varchar2(124),
    STORE_DATE           varchar2(124)
 );
-
-comment on table STORE is
-'Інформація про склад';
-
-comment on column STORE.STUFF_NAME is
-'Унікальний ідентифікатор сховища.';
-
-comment on column STORE.SUPPLIER is
-'Номер полиці складу.';
-
-comment on column STORE.SHELF is
-'Кількітсь товару.';
-
