@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="-17.0" y="318.0">com.solutions.labwork2.Class_1</node>
+    <node x="-60.28125" y="497.0">com.solutions.labwork2.Class_2</node>
+    <node x="-199.0" y="318.0">com.solutions.labwork2.Class_3</node>
+    <node x="-377.0" y="330.5">com.solutions.labwork2.Interface2</node>
+    <node x="-337.5" y="164.0">com.solutions.labwork2.Interface3</node>
+    <node x="-147.78125" y="10.0">com.solutions.labwork2.Interface1</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.solutions.labwork2.Class_3" target="com.solutions.labwork2.Interface1">
+      <point x="40.5" y="-64.5" />
+      <point x="-77.5" y="139.0" />
+      <point x="-68.78125" y="139.0" />
+      <point x="0.0" y="52.0" />
+    </edge>
+    <edge source="com.solutions.labwork2.Interface3" target="com.solutions.labwork2.Interface1">
+      <point x="0.0" y="-52.0" />
+      <point x="-258.5" y="139.0" />
+      <point x="-121.44791666666666" y="139.0" />
+      <point x="-52.66666666666666" y="52.0" />
+    </edge>
+    <edge source="com.solutions.labwork2.Class_1" target="com.solutions.labwork2.Interface1">
+      <point x="0.0" y="-64.5" />
+      <point x="62.0" y="139.0" />
+      <point x="-16.11458333333337" y="139.0" />
+      <point x="52.66666666666666" y="52.0" />
+    </edge>
+    <edge source="com.solutions.labwork2.Class_3" target="com.solutions.labwork2.Interface3">
+      <point x="-40.5" y="-64.5" />
+      <point x="-158.5" y="293.0" />
+      <point x="-219.0" y="293.0" />
+      <point x="39.5" y="52.0" />
+    </edge>
+    <edge source="com.solutions.labwork2.Class_2" target="com.solutions.labwork2.Interface2">
+      <point x="-52.66666666666666" y="-64.5" />
+      <point x="-33.94791666666663" y="472.0" />
+      <point x="-298.0" y="472.0" />
+      <point x="0.0" y="52.0" />
+    </edge>
+    <edge source="com.solutions.labwork2.Interface2" target="com.solutions.labwork2.Interface3">
+      <point x="0.0" y="-52.0" />
+      <point x="-39.5" y="52.0" />
+    </edge>
+    <edge source="com.solutions.labwork2.Class_2" target="com.solutions.labwork2.Class_1">
+      <point x="52.66666666666666" y="-64.5" />
+      <point x="71.38541666666669" y="472.0" />
+      <point x="101.5" y="472.0" />
+      <point x="39.5" y="64.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="14.5" y="340.5" />
+  <SelectedNodes>
+    <node>com.solutions.labwork2.Class_1</node>
+    <node>com.solutions.labwork2.Class_2</node>
+    <node>com.solutions.labwork2.Class_3</node>
+    <node>com.solutions.labwork2.Interface2</node>
+    <node>com.solutions.labwork2.Interface3</node>
+    <node>com.solutions.labwork2.Interface1</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
