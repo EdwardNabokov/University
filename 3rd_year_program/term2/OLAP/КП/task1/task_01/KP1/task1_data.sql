@@ -1,21 +1,3 @@
-set feedback off
-set define off
-
-alter table INVOICE disable all triggers;
-
-alter table SALES disable all triggers;
-
-alter table STORE disable all triggers;
-
-delete from STORE;
-commit;
-
-delete from SALES;
-commit;
-
-delete from INVOICE;
-commit;
-
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
 values ('5', 'Simon Hughes ', 'Hughes .Simon@shop.com', 'INV-15', 'LG', 'TV-10', '1', '3192', '08.05.2011');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
@@ -401,12 +383,3 @@ values ('Barry Davies', 'Rolsen', '12', 'TV-24', '5', 'In', '22.01.2014');
 insert into STORE (stuff_name, supplier, shelf, product, quantity, oper_type, store_date)
 values ('Barry Davies', 'Panasonic', '13', 'TV-51', '2', 'Out', '17.06.2070');
 commit;
-
-
-alter table INVOICE enable all triggers;
-
-alter table SALES enable all triggers;
-
-alter table STORE enable all triggers;
-set feedback on
-set define on

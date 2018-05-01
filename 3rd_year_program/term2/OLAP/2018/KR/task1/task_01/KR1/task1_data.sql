@@ -1,23 +1,3 @@
-prompt PL/SQL Developer import file
-prompt Created on 12 Березень 2014 р. by Oli
-set feedback off
-set define off
-prompt Disabling triggers for INVOICE...
-alter table INVOICE disable all triggers;
-prompt Disabling triggers for SALES...
-alter table SALES disable all triggers;
-prompt Disabling triggers for STORE...
-alter table STORE disable all triggers;
-prompt Deleting STORE...
-delete from STORE;
-commit;
-prompt Deleting SALES...
-delete from SALES;
-commit;
-prompt Deleting INVOICE...
-delete from INVOICE;
-commit;
-prompt Loading INVOICE...
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
 values ('5', 'Simon Hughes ', 'Hughes .Simon@shop.com', 'INV-15', 'LG', 'TV-10', '1', '3192', '08.05.2011');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
@@ -29,7 +9,7 @@ values ('3', 'Barry Davies', 'Davies.Barry@shop.com', 'INV-9', 'Toshiba', 'TV-18
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
 values ('2', 'Adam Thomas', 'Thomas.Adam@shop.com', 'INV-37', 'Philips', 'TV-12', '1', '6917', '01.08.2011');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
-values ('3', 'Barry Davies', 'почтв', 'INV-85', 'Rolsen', 'TV-11', '1', '5799', '07.08.2011');
+values ('3', 'Barry Davies', 'пїЅпїЅпїЅпїЅпїЅ', 'INV-85', 'Rolsen', 'TV-11', '1', '5799', '07.08.2011');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
 values ('4', 'Basil White', 'White.Basil@shop.com', 'INV-87', 'Philips', 'TV-12', '1', '7567', '07.08.2011');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
@@ -41,7 +21,7 @@ values ('3', 'Barry Davies', 'Davies.Barry@shop.com', 'INV-51', 'LG', 'TV-9', '1
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
 values ('5', 'Simon Hughes ', 'Hughes .Simon@shop.com', 'INV-94', 'Toshiba', 'TV-12', '1', '8761', '19.09.2011');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
-values ('4', 'Basil White', 'White.Basil@shop.com', 'INV-95', 'поставщик - 01', 'TV-18', '1', '8874', '01.10.2011');
+values ('4', 'Basil White', 'White.Basil@shop.com', 'INV-95', 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - 01', 'TV-18', '1', '8874', '01.10.2011');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
 values ('3', 'Barry Davies', 'Davies.Barry@shop.com', 'INV-39', 'Panasonic', 'TV-14', '2', '3158', '05.10.2011');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
@@ -65,7 +45,7 @@ values ('5', 'Simon Hughes ', 'Hughes -.Simon@shop.com', '88', 'LG', 'TV-3', '1'
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
 values ('5', 'Simon Hughes ', 'Hughes .Simon@shop.com', 'INV-1', 'LG', 'TV-2', '1', '3696', '05.01.2012');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
-values ('2', 'Adam Thomas', 'почтовый ящик', 'INV-66', 'JVC', 'TV-8', '1', '1337', '12.01.2012');
+values ('2', 'Adam Thomas', 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ', 'INV-66', 'JVC', 'TV-8', '1', '1337', '12.01.2012');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
 values ('6', 'Carlton Edwards', 'Edwards.Carlton@shop.com', 'INV-33', 'Sharp', 'TV-14', '1', '3344', '15.01.2012');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
@@ -171,7 +151,7 @@ values ('2', 'Adam Thomas', 'Thomas.Adam@shop.com', 'INV-36', 'JVC', 'TV-10', '1
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
 values ('5', 'Simon Hughes ', 'Hughes .Simon@shop.com', 'INV-56', 'Philips', 'TV-17', '1', '9753', '26.06.2013');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
-values ('4', 'Basil White', 'White.Basil@shop.com', 'INV-59', 'поставщик Toshiba', 'TV-6', '1', '3980', '27.06.2013');
+values ('4', 'Basil White', 'White.Basil@shop.com', 'INV-59', 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Toshiba', 'TV-6', '1', '3980', '27.06.2013');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
 values ('4', 'Basil White', 'White.Basil@shop.com', 'INV-82', 'Panasonic', '16', '1', '6452', '10.07.2013');
 insert into INVOICE (id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
@@ -242,7 +222,7 @@ values ('3', 'Basil White', 'TV-09', '5', '0', '0', '3', '5', '1', '0', '5', '2'
 insert into SALES (id_stuff, staff_name, product, sold_in_january_2013, sold_in_february_2013, sold_in_march_2013, sold_in_april_2013, sold_in_may_2013, sold_in_june_2013, sold_in_july_2013, sold_in_august_2013, sold_in_september_2013, sold_in_october_2013, sold_in_november_2013, sold_in_december_2013)
 values ('6', 'Adam Thomas', 'TV-10', '4', '0', '0', '3', '2', '4', '0', '1', '3', '5', '1', '3');
 insert into SALES (id_stuff, staff_name, product, sold_in_january_2013, sold_in_february_2013, sold_in_march_2013, sold_in_april_2013, sold_in_may_2013, sold_in_june_2013, sold_in_july_2013, sold_in_august_2013, sold_in_september_2013, sold_in_october_2013, sold_in_november_2013, sold_in_december_2013)
-values ('6', 'фывсаываы', 'TV-11', '4', '0', '0', '0', '1', null, '5', '2', '1', 'ДВА', '4', '1');
+values ('6', 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ', 'TV-11', '4', '0', '0', '0', '1', null, '5', '2', '1', 'пїЅпїЅпїЅ', '4', '1');
 insert into SALES (id_stuff, staff_name, product, sold_in_january_2013, sold_in_february_2013, sold_in_march_2013, sold_in_april_2013, sold_in_may_2013, sold_in_june_2013, sold_in_july_2013, sold_in_august_2013, sold_in_september_2013, sold_in_october_2013, sold_in_november_2013, sold_in_december_2013)
 values ('4', 'Basil White', 'TV-12', '0', '4', '0', '4', '0', '5', '4', '1', '2', '4', '1', '1');
 insert into SALES (id_stuff, staff_name, product, sold_in_january_2013, sold_in_february_2013, sold_in_march_2013, sold_in_april_2013, sold_in_may_2013, sold_in_june_2013, sold_in_july_2013, sold_in_august_2013, sold_in_september_2013, sold_in_october_2013, sold_in_november_2013, sold_in_december_2013)
@@ -281,9 +261,7 @@ insert into SALES (id_stuff, staff_name, product, sold_in_january_2013, sold_in_
 values ('2', 'Adam Thomas', 'TV-29', '1', '0', '0', '2', '3', '0', '4', '2', '3', '3', '1', '1');
 insert into SALES (id_stuff, staff_name, product, sold_in_january_2013, sold_in_february_2013, sold_in_march_2013, sold_in_april_2013, sold_in_may_2013, sold_in_june_2013, sold_in_july_2013, sold_in_august_2013, sold_in_september_2013, sold_in_october_2013, sold_in_november_2013, sold_in_december_2013)
 values ('3', 'Barry Davies', '300', '0', '0', '0', '4', '5', '3', '2', '0', 'ONE', '5', '5', '2');
-commit;
-prompt 30 records loaded
-prompt Loading STORE...
+
 insert into STORE (stuff_name, supplier, shelf, product, quantity, oper_type, store_date)
 values ('Barry Davies', 'Sony', '2', 'TV-23', '8', 'in', '17.05.2011');
 insert into STORE (stuff_name, supplier, shelf, product, quantity, oper_type, store_date)
