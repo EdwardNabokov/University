@@ -2,8 +2,6 @@ drop table INVOICE;
 drop table SALES;
 drop table STORE;
 
-create database SALE;
-
 create table INVOICE  (
    ID_STUFF             varchar2(128) not null PRIMARY KEY,
    STAFF_NAME           varchar2(128),
@@ -43,4 +41,3 @@ create table STORE (
    OPER_TYPE            varchar2(124),
    STORE_DATE           varchar2(124)
 );
-

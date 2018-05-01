@@ -1,14 +1,14 @@
-drop table PAYMENT_TYPE;
-drop table POSITION;
-drop table STUFF;
-drop table INVOICE;
-drop table PRODUCT_TYPE;
-drop table SUPPLIER;
-drop table UNIT;
-drop table PRODUCT;
-drop table INVOICE_DETAIL;
-drop table TYPE_OPER;
-drop table STORE;
+drop table PAYMENT_TYPE CASCADE CONSTRAINTS;
+drop table POSITION CASCADE CONSTRAINTS;
+drop table STUFF CASCADE CONSTRAINTS;
+drop table INVOICE CASCADE CONSTRAINTS;
+drop table PRODUCT_TYPE CASCADE CONSTRAINTS;
+drop table SUPPLIER CASCADE CONSTRAINTS;
+drop table UNIT CASCADE CONSTRAINTS;
+drop table PRODUCT CASCADE CONSTRAINTS;
+drop table INVOICE_DETAIL CASCADE CONSTRAINTS;
+drop table TYPE_OPER CASCADE CONSTRAINTS;
+drop table STORE CASCADE CONSTRAINTS;
 
 drop index FK_STUFF;
 drop index FK_TYPE;
@@ -124,4 +124,3 @@ create index FK_TYPE on INVOICE (ID_TYPE)
     minextents 1
     maxextents unlimited
   );
-
