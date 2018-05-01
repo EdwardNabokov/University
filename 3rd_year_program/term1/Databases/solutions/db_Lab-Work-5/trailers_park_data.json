@@ -1,0 +1,61 @@
+{
+    "_id": 0,
+    "auto_brand": "BMW",
+    "auto_num": 6426,
+    "garage_number": 345,
+    "released_date": "23.1.51"
+},{
+    "_id": 1,
+    "auto_brand": "Mercedes",
+    "auto_num": 9806,
+    "garage_number": 987,
+    "released_date": "14.11.17"
+},{
+    "_id": 2,
+    "auto_brand": "Volkswagen",
+    "auto_num": 6533,
+    "garage_number": 982,
+    "released_date": "15.1.22"
+},{
+    "_id": 3,
+    "auto_brand": "Schkoda",
+    "auto_num": 6362,
+    "garage_number": 591,
+    "released_date": "11.1.60"
+},{
+    "_id": 4,
+    "auto_brand": "Ford",
+    "auto_num": 6812,
+    "garage_number": 370,
+    "released_date": "14.6.2"
+},{
+    "_id": 5,
+    "auto_brand": "Ferrari",
+    "auto_num": 1149,
+    "garage_number": 539,
+    "released_date": "4.6.72"
+},{
+    "_id": 6,
+    "auto_brand": "BMW",
+    "auto_num": 6084,
+    "garage_number": 965,
+    "released_date": "21.8.63"
+},{
+    "_id": 7,
+    "auto_brand": "Suzuki",
+    "auto_num": 7293,
+    "garage_number": 443,
+    "released_date": "28.11.70"
+},{
+    "_id": 8,
+    "auto_brand": "Mercedes",
+    "auto_num": 5322,
+    "garage_number": 132,
+    "released_date": "27.5.30"
+},{
+    "_id": 9,
+    "auto_brand": "Subaru",
+    "auto_num": 1334,
+    "garage_number": 51,
+    "released_date": "4.5.73"
+},
