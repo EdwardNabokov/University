@@ -32,7 +32,8 @@ drop procedure LOAD_STORE;
 
 
 create table INVOICE  (
-   ID_STUFF             varchar2(128) not null PRIMARY KEY,
+   ID_INVOICE           int not null PRIMARY KEY,
+   ID_STUFF             varchar2(128),
    STAFF_NAME           varchar2(128),
    E_MAIL               varchar2(128),
    INVOICE              varchar2(128),
@@ -82,8 +83,8 @@ create table INVOICE_S  (
 
 create table INVOICE_D  (
    ID_INVOICE NUMBER NOT NULL,
-   ID_TYPE NUMBER NOT NULL,
-   ID_STUFF NUMBER NOT NULL,
+   ID_TYPE VARCHAR2,
+   ID_STUFF VARCHAR2(255),
    PURCHASE_TIME DATE NOT NULL,
    CONSTRAINT PK_INVOICE_D PRIMARY KEY ("ID_INVOICE")
    --CONSTRAINT FK_STUFF FOREIGN KEY ("ID_STUFF") REFERENCES "STUFF"("ID_STUFF")
@@ -202,7 +203,8 @@ CREATE TABLE TYPE_OPER_D (
 
 CREATE OR REPLACE PROCEDURE LOAD_STUFF IS
  CURSOR C1 IS
-    SELECT DISTINCT ID_STUFF, STAFF_NAME, E_MAIL FROM INVOICE WHERE REGEXP_LIKE (E_MAIL, '^[A-Za-z]+[A-Za-z0-9. ]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$');
+    SELECT DISTINCT ID_STUFF, STAFF_NAME, E_MAIL FROM INVOICE
+    WHERE REGEXP_LIKE (E_MAIL, '^[A-Za-z]+[A-Za-z0-9. ]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$');
 BEGIN
   FOR STUFF_REC IN C1
   LOOP
@@ -253,6 +255,7 @@ BEGIN
 END;
 
 CALL LOAD_PRODUCT();
+
 SELECT * FROM PRODUCT_S;
 SELECT * FROM SUPPLIER_S;
 SELECT * FROM INVOICE;
@@ -314,6 +317,7 @@ BEGIN
 END;
 
 CALL LOAD_INVOICE_DETAILS();
+
 SELECT * FROM INVOICE_DETAIL_S;
 SELECT * FROM INVOICE;
 
@@ -459,3 +463,123 @@ MERGE INTO TYPE_OPER_D TARGET USING (
     UPDATE SET NAME_OPER = SOURCE.NAME_OPER, DESCRIPTION = SOURCE.DESCRIPTION
     WHEN NOT MATCHED THEN
      INSERT VALUES (SOURCE.ID_OPER_TYPE, SOURCE.NAME_OPER, SOURCE.DESCRIPTION);
+
+
+
+SELECT * FROM INVOICE;
+
+
+CREATE FUNCTION IS_DATE (p_string IN VARCHAR2)
+   RETURN INT
+IS
+   V_NEW_DATE DATE;
+BEGIN
+   V_NEW_DATE := TO_DATE(p_string);
+   RETURN 1;
+EXCEPTION
+WHEN others THEN
+   RETURN 0;
+END IS_DATE;
+
+
+---- task
+select * from INVOICE;
+
+insert into INVOICE (ID_INVOICE, id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
+values (1, '1', 'Simon Hughes ', 'Hughes .Simon@shop.com', 'INV-15', 'LG', 'TV-10', '1', '3192', '08.05.2011');
+insert into INVOICE (ID_INVOICE, id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
+values (2, '2', 'Barry Davies', 'Davies.Barry@shop.com', 'INV-75', 'Toshiba', 'TV-20', '1', '8908', '29.06.2011');
+insert into INVOICE (ID_INVOICE, id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
+values (3, '3', 'Adam Thomas', 'Thomas.Adam@shop.com', 'INV-73', 'Sony', 'TV-3', '1', '8887', '02.07.2011');
+insert into INVOICE (ID_INVOICE, id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
+values (4, '4', 'Barry Davies', 'Davies.Barry@shop.com', 'INV-9', 'Toshiba', 'TV-18', '2', '3365', '21.07.2011');
+insert into INVOICE (ID_INVOICE, id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
+values (5, '5', 'Adam Thomas', 'Thomas.Adam@shop.com', 'INV-37', 'Philips', 'TV-12', '1', '6917', '01.08.2011');
+insert into INVOICE (ID_INVOICE, id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
+values (6, '6', 'Barry Davies', '�����', 'INV-85', 'Rolsen', 'TV-11', '1', '5799', '07.08.2011');
+insert into INVOICE (ID_INVOICE, id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
+values (7, '7', 'Basil White', 'White.Basil@shop.com', 'INV-87', 'Philips', 'TV-12', '1', '7567', '07.08.2011');
+insert into INVOICE (ID_INVOICE, id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
+values (8, '8', 'Carlton Edwards', 'Edwards.Carlton@shop.com', 'INV-62', 'Rolsen', 'TV-18', '1', '6890', '23.08.2011');
+insert into INVOICE (ID_INVOICE, id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
+values (9, '9', 'Barry Davies', 'Davies.Barry@shop.com', 'INV-69', 'Sony', 'TV-19', '1', '8349', '09.09.2011');
+insert into INVOICE (ID_INVOICE, id_stuff, staff_name, e_mail, invoice, supplier, product, quantity, price, invoice_date)
+values (10, '10', 'Barry Davies', 'Davies.Barry@shop.com', 'INV-51', 'LG', 'TV-9', '1', '9334', '11.09.2011');
+
+SELECT * FROM INVOICE;
+SELECT * FROM STUFF_D;
+
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (1, 1, 'Aaron', 'Smih', '365-54-87', '����', 'Smih@market.com');
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (2, 1, 'Adam', 'Thomas', '584-98-44', '����', 'Thomas@market.com');
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (3, 1, 'Barry', 'Davies', '063-564-54-54', '����', 'Davies@market.com');
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (4, 1, 'Basil', 'White', '097-347-44-99', '����', 'White@market.com');
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (5, 1, 'Simon', 'Hughes', '050-54-21', '����', 'Hughes@market.com');
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (6, 1, 'Carlton', 'Edwards', '546-21-64', '����', 'Edwards@market.com');
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (7, 2, 'Sebastian', 'Green', '878-54-63', '����', 'Green@market.com');
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (8, 3, 'Scott', 'Wood', '050-879-54-16', '����', 'Wood@market.com');
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (9, 4, 'Galvin', 'Harris', '093-879-23-54', '����', 'Harris@market.com');
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (10, 5, 'Bob', 'Martin', '097-213-54-69', '����', 'Martin@market.com');
+insert into STUFF_D (id_stuff, id_position, name, surname, phone, address, email)
+values (11, 4, 'Hunter', 'Anderson', '023-878-54-96', '����������', 'Anderson@market.com');
+
+
+-- extra user
+insert into INVOICE (ID_INVOICE, ID_STUFF, STAFF_NAME, E_MAIL, INVOICE, SUPPLIER, PRODUCT, QUANTITY, PRICE, INVOICE_DATE)
+values (11, null, 'Carlton Edwards', 'Edwards.Carlton@shop.com', 'INV-62', 'Rolsen', 'TV-18', '1', '6890', '23.08.2011');
+
+SELECT * FROM STUFF_D;
+SELECT * FROM INVOICE;
+
+
+drop table INVOICE_D;
+create table INVOICE_D  (
+   ID_INVOICE           int not null PRIMARY KEY,
+   ID_STUFF             varchar2(128),
+   STAFF_NAME           varchar2(128),
+--    E_MAIL               varchar2(128),
+--    INVOICE              varchar2(128),
+--    SUPPLIER             varchar2(128),
+--    PRODUCT              varchar2(128),
+--    QUANTITY             varchar2(128),
+--    PRICE                varchar2(128),
+   INVOICE_DATE         varchar2(128)
+);
+
+MERGE INTO INVOICE_D TARGET
+  USING (
+    SELECT DISTINCT T1.ID_INVOICE, T1.ID_STUFF, T1.STAFF_NAME, T1.INVOICE_DATE FROM INVOICE T1) SOURCE ON (TARGET.ID_STUFF = SOURCE.ID_STUFF)
+    WHEN MATCHED THEN
+        UPDATE SET ID_INVOICE = SOURCE.ID_INVOICE, STAFF_NAME = SOURCE.STAFF_NAME, INVOICE_DATE = SOURCE.INVOICE_DATE
+      WHEN NOT MATCHED THEN
+        INSERT VALUES (SOURCE.ID_INVOICE, SOURCE.ID_STUFF, SOURCE.STAFF_NAME, SOURCE.INVOICE_DATE)
+        WHERE STAFF_NAME LIKE SOURCE.STAFF_NAME;
+
+select * from INVOICE;
+SELECT * FROM STUFF_D;
+SELECT * FROM INVOICE_D;
+
+TRUNCATE TABLE INVOICE_D;
+
+
+CREATE OR REPLACE PROCEDURE LOAD_TEST IS
+ CURSOR C1 IS
+    SELECT DISTINCT ID_STUFF, STAFF_NAME, E_MAIL FROM INVOICE WHERE REGEXP_LIKE (E_MAIL, '^[A-Za-z]+[A-Za-z0-9. ]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$');
+BEGIN
+  FOR STUFF_REC IN C1
+  LOOP
+  IF STUFF_REC.ID_STUFF IS NULL THEN
+    INSERT INTO INVOICE_D (ID_STUFF, STAFF_NAME, INVOICE_DATE)
+      SELECT ID_STUFF FROM STUFF_D
+      WHERE NAME LIKE
+  END LOOP;
+END;
