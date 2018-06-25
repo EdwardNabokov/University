@@ -380,14 +380,3 @@ insert into STORE (stuff_name, supplier, shelf, product, quantity, oper_type, st
 values ('Barry Davies', 'Rolsen', '12', 'TV-24', '5', 'In', '22.01.2014');
 insert into STORE (stuff_name, supplier, shelf, product, quantity, oper_type, store_date)
 values ('Barry Davies', 'Panasonic', '13', 'TV-51', '2', 'Out', '17.06.2070');
-commit;
-prompt 59 records loaded
-prompt Enabling triggers for INVOICE...
-alter table INVOICE enable all triggers;
-prompt Enabling triggers for SALES...
-alter table SALES enable all triggers;
-prompt Enabling triggers for STORE...
-alter table STORE enable all triggers;
-set feedback on
-set define on
-prompt Done.

@@ -14,40 +14,42 @@ drop table STORE;
 /*==============================================================*/
 create database SALE;
 
+
+
 /*==============================================================*/
 /* Table: INVOICE                                               */
 /*==============================================================*/
 create table INVOICE  (
-   ID_STUFF             varchar2(128)                   not null,
-   STAFF_NAME           varchar2(128),
-   E_MAIL               varchar2(128),
-   INVOICE              varchar2(128),
-   SUPPLIER             varchar2(128),
-   PRODUCT              varchar2(128),
-   QUANTITY             varchar2(128),
-   PRICE                varchar2(128),
-   INVOICE_DATE         varchar2(128)
+   ID_STUFF             varchar(128)                   not null,
+   STAFF_NAME           varchar(128),
+   E_MAIL               varchar(128),
+   INVOICE              varchar(128),
+   SUPPLIER             varchar(128),
+   PRODUCT              varchar(128),
+   QUANTITY             varchar(128),
+   PRICE                varchar(128),
+   INVOICE_DATE         varchar(128)
 );
 
 /*==============================================================*/
 /* Table: SALES                                                 */
 /*==============================================================*/
 create table SALES  (
-   ID_STUFF             VARCHAR2(128)                   not null,
-   STAFF_NAME           varchar2(128),
-   PRODUCT              VARCHAR2(128),
-   SOLD_IN_JANUARY_2013 varchar2(128),
-   SOLD_IN_FEBRUARY_2013 VARCHAR2(128),
-   SOLD_IN_MARCH_2013   varchar2(128),
-   SOLD_IN_APRIL_2013   varchar2(128),
-   SOLD_IN_MAY_2013     VARCHAR2(128),
-   SOLD_IN_JUNE_2013    VARCHAR2(128),
-   SOLD_IN_JULY_2013    VARCHAR2(128),
-   SOLD_IN_AUGUST_2013  VARCHAR2(128),
-   SOLD_IN_SEPTEMBER_2013 VARCHAR2(128),
-   SOLD_IN_OCTOBER_2013 VARCHAR2(128),
-   SOLD_IN_NOVEMBER_2013 VARCHAR2(128),
-   SOLD_IN_DECEMBER_2013 VARCHAR2(128)
+   ID_STUFF             varchar(128)                   not null,
+   STAFF_NAME           varchar(128),
+   PRODUCT              varchar(128),
+   SOLD_IN_JANUARY_2013 varchar(128),
+   SOLD_IN_FEBRUARY_2013 varchar(128),
+   SOLD_IN_MARCH_2013   varchar(128),
+   SOLD_IN_APRIL_2013   varchar(128),
+   SOLD_IN_MAY_2013     varchar(128),
+   SOLD_IN_JUNE_2013    varchar(128),
+   SOLD_IN_JULY_2013    varchar(128),
+   SOLD_IN_AUGUST_2013  varchar(128),
+   SOLD_IN_SEPTEMBER_2013 varchar(128),
+   SOLD_IN_OCTOBER_2013 varchar(128),
+   SOLD_IN_NOVEMBER_2013 varchar(128),
+   SOLD_IN_DECEMBER_2013 varchar(128)
 );
 
 
@@ -55,11 +57,11 @@ create table SALES  (
 /* Table: STORE                                                 */
 /*==============================================================*/
 create table STORE  (
-   STUFF_NAME           varchar2(124)                   not null,
-   SUPPLIER             varchar2(124),
-   SHELF                varchar2(124),
-   PRODUCT              varchar2(124),
-   QUANTITY             varchar2(124),
-   OPER_TYPE            varchar2(124),
-   STORE_DATE           varchar2(124)
+   STUFF_NAME           varchar(124)                   not null,
+   SUPPLIER             varchar(124),
+   SHELF                varchar(124),
+   PRODUCT              varchar(124),
+   QUANTITY             varchar(124),
+   OPER_TYPE            varchar(124),
+   STORE_DATE           varchar(124)
 );
