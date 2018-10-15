@@ -1,72 +1,78 @@
 package kpi.lab3;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicIntegerArray;
+import java.util.stream.IntStream;
 
 public class Lab3 {
-    public interface ActionWrapper {
-        Action action(int[] array, Object... objects);
-    }
-
-    private static Callable createTask(ActionContext context) {
-        Callable task;
-
-        task = () -> {
-            System.out.println("Asynchronous callable");
-            return context.executeAction();
-        };
-
-        return task;
-    }
-
-    private static List<Callable> generateTasks(int[] array, int totalThreads, ActionWrapper wrapper, Object... objects) {
-        ActionContext context;
-        List<Callable> tasks = new ArrayList<>();
-        for(int i = 0; i < array.length; i += array.length / totalThreads) {
-            context = new ActionContext();
-            context.setAction(wrapper.action(Arrays.copyOfRange(array, i, i + array.length / totalThreads), objects));
-            tasks.add(createTask(context));
-        }
-
-        return tasks;
-    }
-
-    private static List<Future> executeTasks(ExecutorService executor, List<Callable> tasks) {
-        List<Future> futures = new ArrayList<>();
-        for(Callable task : tasks) {
-            futures.add(executor.submit(task));
-        }
-
-        return futures;
-    }
-
-    private static void printFutureResults(List<Future> futures) throws ExecutionException, InterruptedException {
-        for(Future s: futures) {
-            System.out.println(s.get());
-        }
-    }
-
-    public static void main(String... args) throws ExecutionException, InterruptedException {
+    public static void main(String[] args) {
         Utils utils = new Utils();
-
-        int totalThreads = 3;
 
         int[] array = utils.generateArray(15);
         utils.printArray(array);
+        System.out.println("- - - - - - - - - - - - -");
+        System.out.println("Number of elements greater than 5 is " + FindElementsByCondtion(array, 5));
 
-        ExecutorService executorService = Executors.newFixedThreadPool(totalThreads);
+        MinMaxPair<Integer, Integer> minMaxResults = FindMinMaxElements(array);
+        System.out.println("Min element is " + array[minMaxResults.first] + " -- index " + minMaxResults.first);
+        System.out.println("Max element is " + array[minMaxResults.second] + " -- index " + minMaxResults.second);
+        System.out.println("Control Hash Sum of array is " + FindChecksum(array));
+    }
 
-        ActionWrapper wrapper = new ActionWrapper() {
-            @Override
-            public Action action(int[] array, Object... objects) {
-                return new FindElementsMinMax(array, (String)objects[0]);
+    private static int FindElementsByCondtion(int[] array, int threshold) {
+        AtomicInteger counter = new AtomicInteger();
+
+        IntStream.of(array).parallel().forEach(x -> {
+            if (x < threshold) {
+                int oldValue;
+                int newValue;
+
+                oldValue = counter.get();
+                newValue = oldValue + 1;
+                counter.compareAndSet(oldValue, newValue);
             }
-        };
+        });
 
-        List<Callable> tasks = generateTasks(array, totalThreads, wrapper, "min");
-        List<Future> futures = executeTasks(executorService, tasks);
+        return counter.get();
+    }
 
-        printFutureResults(futures);
-        executorService.shutdown();
+    private static MinMaxPair<Integer, Integer> FindMinMaxElements(int[] array) {
+        AtomicInteger minIndex = new AtomicInteger();
+        AtomicInteger maxIndex = new AtomicInteger();
+
+        IntStream.range(0, array.length).parallel().forEach(i -> {
+            int oldValue;
+            int newValue;
+
+            do {
+                oldValue = minIndex.get();
+                newValue = i;
+            } while (((array[i] < array[oldValue]) || (array[i] == array[oldValue] && i < oldValue))
+                    && !minIndex.compareAndSet(oldValue, newValue));
+
+            do {
+                oldValue = maxIndex.get();
+                newValue = i;
+            } while (((array[i] > array[oldValue]) || (array[i] == array[oldValue] && i < oldValue))
+                    && !maxIndex.compareAndSet(oldValue, newValue));
+        });
+
+        return new MinMaxPair<>(minIndex.get(), maxIndex.get());
+    }
+
+    private static int FindChecksum(int[] array) {
+        AtomicInteger controlHashSum = new AtomicInteger();
+
+        IntStream.of(array).parallel().forEach(x -> {
+            int oldValue;
+            int newValue;
+
+            do {
+                oldValue = controlHashSum.get();
+                newValue = oldValue ^ x;
+            } while (!controlHashSum.compareAndSet(oldValue, newValue));
+        });
+
+        return controlHashSum.get();
     }
 }
