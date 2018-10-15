@@ -1,5 +1,6 @@
 package kpi.lab3;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicIntegerArray;
 import java.util.stream.IntStream;
@@ -11,32 +12,43 @@ public class Lab3 {
         int[] array = utils.generateArray(15);
         utils.printArray(array);
         System.out.println("- - - - - - - - - - - - -");
-        System.out.println("Number of elements greater than 5 is " + FindElementsByCondtion(array, 5));
 
-        MinMaxPair<Integer, Integer> minMaxResults = FindMinMaxElements(array);
-        System.out.println("Min element is " + array[minMaxResults.first] + " -- index " + minMaxResults.first);
-        System.out.println("Max element is " + array[minMaxResults.second] + " -- index " + minMaxResults.second);
-        System.out.println("Control Hash Sum of array is " + FindChecksum(array));
+        Pair<AtomicInteger, ArrayList> elementsResults = FindElementsByCondtion(array, 5);
+        System.out.println("Number of elements lower than 5 is " + elementsResults.first + " -- " + elementsResults.second);
+
+        Pair<Integer, Integer> minMaxResults = FindMinMaxElements(array);
+        System.out.println("Min element: " + array[minMaxResults.first] + " -- index " + minMaxResults.first);
+        System.out.println("Max element: " + array[minMaxResults.second] + " -- index " + minMaxResults.second);
+        System.out.println("Checksum: " + FindChecksum(array));
     }
 
-    private static int FindElementsByCondtion(int[] array, int threshold) {
+    private static Pair<AtomicInteger, ArrayList> FindElementsByCondtion(int[] array, int threshold) {
         AtomicInteger counter = new AtomicInteger();
+        AtomicIntegerArray elements = new AtomicIntegerArray(array.length);
 
-        IntStream.of(array).parallel().forEach(x -> {
-            if (x < threshold) {
+        IntStream.range(0, array.length).parallel().forEach(i -> {
+            if (array[i] < threshold) {
                 int oldValue;
                 int newValue;
 
                 oldValue = counter.get();
                 newValue = oldValue + 1;
                 counter.compareAndSet(oldValue, newValue);
+
+                elements.getAndSet(i, array[i]);
             }
         });
 
-        return counter.get();
+        ArrayList<Integer> values = new ArrayList<>();
+        for(int i = 0; i < elements.length(); i++) {
+            if(elements.get(i) != 0)
+                values.add(array[i]);
+        }
+
+        return new Pair<>(counter, values);
     }
 
-    private static MinMaxPair<Integer, Integer> FindMinMaxElements(int[] array) {
+    private static Pair<Integer, Integer> FindMinMaxElements(int[] array) {
         AtomicInteger minIndex = new AtomicInteger();
         AtomicInteger maxIndex = new AtomicInteger();
 
@@ -57,7 +69,7 @@ public class Lab3 {
                     && !maxIndex.compareAndSet(oldValue, newValue));
         });
 
-        return new MinMaxPair<>(minIndex.get(), maxIndex.get());
+        return new Pair<>(minIndex.get(), maxIndex.get());
     }
 
     private static int FindChecksum(int[] array) {
