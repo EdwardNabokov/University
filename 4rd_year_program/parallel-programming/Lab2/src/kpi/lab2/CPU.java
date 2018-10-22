@@ -1,6 +1,5 @@
 package kpi.lab2;
 
-
 import java.io.IOException;
 
 public class CPU implements Runnable {
