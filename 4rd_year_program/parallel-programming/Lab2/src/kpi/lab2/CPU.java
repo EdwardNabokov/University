@@ -1,45 +1,42 @@
 package kpi.lab2;
 
 import java.io.IOException;
-import java.util.Random;
 
-class CPU extends Daemon {
+public class CPU implements Runnable {
     private CPUQueue queue;
 
-    CPU(CPUQueue queue, String threadName) {
+    CPU(CPUQueue queue) {
         this.queue = queue;
-        this.threadName = threadName;
     }
 
-    private ProcessBuilder getProcess() throws InterruptedException {
-        while(true) {
-            if (this.queue.size() == 0) {
-                System.out.println(this.threadName + ": no process in queue. Waiting...");
-                Thread.sleep(new Random().nextInt((5000 - 2000) + 1) + 2000);
-            } else {
-                break;
-            }
+    private void executeProcess(String threadName) {
+        ProcessBuilder processBuilder = this.queue.getProcess();
+        System.out.println(threadName + ": get available process from queue");
+        processBuilder.inheritIO();
+        Process process;
+        try {
+            process = processBuilder.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
         }
 
-        System.out.println(this.threadName + ": get available process from queue");
-        return queue.getProcess();
-    }
-
-    private void executeProcess() throws InterruptedException, IOException {
-        ProcessBuilder processBuilder = getProcess();
-        processBuilder.inheritIO();
-        Process process = processBuilder.start();
-        System.out.println(this.threadName + ": execute process " + process.pid());
-        process.waitFor();
+        System.out.println(threadName + ": executing process " + process.pid());
     }
 
     @Override
-    protected void process() {
+    public void run() {
+        String name = Thread.currentThread().getName();
         while(true) {
-            try {
-                this.executeProcess();
-            } catch (InterruptedException | IOException e) {
-                e.printStackTrace();
+            synchronized (this.queue) {
+                try {
+                    System.out.println(name + ": waiting");
+                    this.queue.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(name + ": notified");
+                this.executeProcess(name);
             }
         }
     }

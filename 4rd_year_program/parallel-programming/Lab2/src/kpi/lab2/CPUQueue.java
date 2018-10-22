@@ -3,9 +3,8 @@ package kpi.lab2;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-
 public class CPUQueue {
-    int maxSize;
+    private int maxSize;
     private Queue<ProcessBuilder> cpuQueue = new ArrayDeque<>();
 
     CPUQueue(int maxSize) {
@@ -20,11 +19,11 @@ public class CPUQueue {
         return this.cpuQueue.poll();
     }
 
-    int size() {
+    int getSize() {
         return this.cpuQueue.size();
     }
 
-    public int getMaxSize() {
+    int getMaxSize() {
         return this.maxSize;
     }
 }
