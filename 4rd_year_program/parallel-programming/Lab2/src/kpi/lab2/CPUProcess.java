@@ -2,12 +2,10 @@ package kpi.lab2;
 
 import java.util.Random;
 
-class CPUProcess extends Daemon {
-    private long timeDelay;
+public class CPUProcess implements Runnable {
     private CPUQueue queue;
 
-    CPUProcess(int timeDelay, CPUQueue queue) {
-        this.timeDelay = timeDelay;
+    CPUProcess(CPUQueue queue) {
         this.queue = queue;
     }
 
@@ -18,29 +16,20 @@ class CPUProcess extends Daemon {
         return new ProcessBuilder("sleep", Integer.toString(randomNum));
     }
 
-    private void putProcess() throws InterruptedException {
-        while(true) {
-            if (this.queue.size() >= this.queue.maxSize) {
-                System.out.println("QUEUE: Queue is full");
-                Thread.sleep(5000);
-            }
-            else {
-                break;
-            }
-        }
-
-        System.out.println("Generate new process and put into the queue");
-        this.queue.addProcess(generateProcess());
-    }
-
     @Override
-    protected void process() {
+    public void run() {
+        String name = Thread.currentThread().getName();
         while(true) {
             try {
-                Thread.sleep(this.timeDelay);
-                putProcess();
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            }
+            synchronized (this.queue) {
+                this.queue.addProcess(generateProcess());
+                System.out.println(name + ": generating new process and adding to queue");
+                this.queue.notify();
+                System.out.println(name + ": notifying of newly created process");
             }
         }
     }
