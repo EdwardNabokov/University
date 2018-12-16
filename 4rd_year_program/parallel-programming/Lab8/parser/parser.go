@@ -3,8 +3,11 @@ package parser
 import (
 	"bytes"
 	"encoding/xml"
+	"github.com/jbussdieker/golibxml"
+	"github.com/krolaw/xsd"
 	"io/ioutil"
 	"strings"
+	"unsafe"
 
 	xj "github.com/basgys/goxml2json"
 )
@@ -52,4 +55,39 @@ func ParseXml(filename string) Candies {
 	}
 
 	return candies
+}
+
+func ValidateXmlWithXsd(filenameXml string, filenameXsd string) (status int64) {
+	xsdBytes, err := ioutil.ReadFile(filenameXsd)
+	if err != nil {
+		panic(err)
+	}
+
+	xsdSchema, err := xsd.ParseSchema(xsdBytes)
+	if err != nil {
+		panic(err)
+	}
+
+	xsdBytes, err = ioutil.ReadFile(filenameXsd)
+	if err != nil {
+		panic(err)
+	}
+
+	xmlBytes, err := ioutil.ReadFile(filenameXml)
+	if err != nil {
+		panic(err)
+	}
+
+	doc := golibxml.ParseDoc(string(xmlBytes))
+	if doc == nil {
+		panic("Error parsed document")
+	}
+
+	defer doc.Free()
+
+	if err := xsdSchema.Validate(xsd.DocPtr(unsafe.Pointer(doc.Ptr))); err != nil {
+		panic(err)
+	}
+
+	return 1
 }

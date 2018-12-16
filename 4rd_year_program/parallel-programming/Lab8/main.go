@@ -22,4 +22,7 @@ func main() {
 	fmt.Println(parsedXml.Candy[0])
 	fmt.Println(parsedXml.Candy[1])
 	fmt.Println(parsedXml.Candy[2])
+
+	status := parser.ValidateXmlWithXsd(filename, "./test.xsd")
+	fmt.Println(status)
 }
