@@ -14,17 +14,17 @@ import (
 
 type Components struct {
 	Protein float64 `xml:"protein"`
-	Fat float64 `xml:"fat"`
-	Carbs float64 `xml:"carbs"`
+	Fat     float64 `xml:"fat"`
+	Carbs   float64 `xml:"carbs"`
 }
 
 type Candy struct {
-	Name string `xml:"name"`
-	Energy float64 `xml:"energy"`
-	Types []string `xml:"types>type"`
-	Ingredients []string `xml:"ingredients>ingredient"`
-	Consist Components `xml:"value"`
-	Production string `xml:"production"`
+	Name        string     `xml:"name"`
+	Energy      float64    `xml:"energy"`
+	Types       []string   `xml:"types>type"`
+	Ingredients []string   `xml:"ingredients>ingredient"`
+	Consist     Components `xml:"value"`
+	Production  string     `xml:"production"`
 }
 
 type Candies struct {
