@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <candies>
-    <Candy>
+    <Candy id="100">
         <name>Bleu</name>
         <energy>432.1</energy>
         <types>
@@ -20,7 +20,7 @@
         </value>
         <production>ATB</production>
     </Candy>
-    <Candy>
+    <Candy id="101">
         <name>Mult</name>
         <energy>120.9</energy>
         <types>
@@ -39,7 +39,7 @@
         </value>
         <production>Charleroi</production>
     </Candy>
-    <Candy>
+    <Candy id="102">
         <name>Zrok</name>
         <energy>230</energy>
         <types>
