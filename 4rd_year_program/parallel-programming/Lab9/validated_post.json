@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<candies>
+    <Candy>
+        <name>Bleu</name>
+        <energy>432.1</energy>
+        <types>
+            <type>chocolate</type>
+            <type>cognac</type>
+        </types>
+        <ingredients>
+            <ingredient>water</ingredient>
+            <ingredient>sugar</ingredient>
+            <ingredient>black chocolate</ingredient>
+        </ingredients>
+        <value>
+            <protein>25</protein>
+            <fat>10</fat>
+            <carbs>97.4</carbs>
+        </value>
+        <production>ATB</production>
+    </Candy>
+    <Candy>
+        <name>Mult</name>
+        <energy>120.9</energy>
+        <types>
+            <type>marmelade</type>
+            <type>whiskey</type>
+        </types>
+        <ingredients>
+            <ingredient>water</ingredient>
+            <ingredient>sugar</ingredient>
+            <ingredient>white chocolate</ingredient>
+        </ingredients>
+        <value>
+            <protein>70</protein>
+            <fat>0.5</fat>
+            <carbs>54</carbs>
+        </value>
+        <production>Charleroi</production>
+    </Candy>
+    <Candy>
+        <name>Zrok</name>
+        <energy>230</energy>
+        <types>
+            <type>chocolate</type>
+        </types>
+        <ingredients>
+            <ingredient>water</ingredient>
+            <ingredient>sugar</ingredient>
+            <ingredient>cherry</ingredient>
+        </ingredients>
+        <value>
+            <protein>5</protein>
+            <fat>1</fat>
+            <carbs>41</carbs>
+        </value>
+        <production>Bosnia</production>
+    </Candy>
+</candies>
