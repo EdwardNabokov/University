@@ -11,17 +11,13 @@ public class Lab6 {
         double[] vector = new double[SIZE];
         int rank = MPI.COMM_WORLD.Rank();
         int size = MPI.COMM_WORLD.Size();
-
         if (rank == 0) {
-            Random gen = new Random();
-            gen.setSeed(0xCAFFE);
-
             for(int i = 0; i < SIZE; i++) {
-                vector[i] = gen.nextDouble();
+                vector[i] = new Random().nextDouble();
             }
         }
 
-        double start_time = System.nanoTime();
+        double startTime = System.nanoTime();
         MPI.COMM_WORLD.Bcast(vector, 0, SIZE, MPI.DOUBLE, 0);
 
         int end = (rank == (size - 1)) ? SIZE : (SIZE / size) * (rank + 1);
@@ -34,9 +30,8 @@ public class Lab6 {
         double[] parallelResult = new double[1];
         parallelResult[0] = sum;
         MPI.COMM_WORLD.Reduce(parallelResult, 0, parallelResult, 0, 1, MPI.DOUBLE, MPI.SUM, 0);
-
         if (rank == 0) {
-            double parallel_time = System.nanoTime() - start_time;
+            double parallel_time = System.nanoTime() - startTime;
             parallelResult[0] = Math.sqrt(parallelResult[0]);
             System.out.format("\tParallel results: %.6f\n", parallelResult[0]);
             System.out.format("\tParallel time: %.3fs\n", parallel_time / 1e9);
