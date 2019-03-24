@@ -1,0 +1,9 @@
+image_s:
+  type: img
+  value: default.png # TODO: change png file
+
+image_h:
+  type: img
+  value: default.png # TODO: change png file
+
+padding: 15

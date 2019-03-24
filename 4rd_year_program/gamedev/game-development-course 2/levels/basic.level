@@ -1,0 +1,67 @@
+
+# Background
+BlockBackground 0 0
+
+# Top Walls
+BlockMedium 0 0
+BlockMedium 64 0
+BlockMedium 128 0
+BlockMedium 192 0
+BlockMedium 256 0
+BlockMedium 320 0
+BlockMedium 384 0
+BlockMedium 448 0
+BlockMedium 512 0
+BlockMedium 576 0
+BlockMedium 640 0
+BlockMedium 704 0
+BlockMedium 768 0
+BlockMedium 832 0
+BlockMedium 896 0
+BlockMedium 960 0
+BlockMedium 1024 0
+BlockMedium 1088 0
+BlockMedium 1152 0
+BlockMedium 1216 0
+
+# Bottom Walls
+BlockMedium 0 704
+BlockMedium 64 704
+BlockMedium 128 704
+BlockMedium 192 704
+BlockMedium 256 704
+BlockMedium 320 704
+BlockMedium 384 704
+BlockMedium 448 704
+BlockMedium 512 704
+BlockMedium 576 704
+BlockMedium 640 704
+BlockMedium 704 704
+BlockMedium 768 704
+BlockMedium 832 704
+BlockMedium 896 704
+BlockMedium 960 704
+BlockMedium 1024 704
+BlockMedium 1088 704
+BlockMedium 1152 704
+BlockMedium 1216 704
+
+# Left Walls
+BlockMedium 0 64
+BlockMedium 0 128
+BlockMedium 0 192
+BlockSmall 0 256
+BlockMedium 0 640
+BlockMedium 0 576
+BlockMedium 0 512
+BlockSmall 0 480
+
+# Right Walls
+BlockMedium 1216 64
+BlockMedium 1216 128
+BlockMedium 1216 192
+BlockSmall 1248 256
+BlockMedium 1216 640
+BlockMedium 1216 576
+BlockMedium 1216 512
+BlockSmall 1248 480
