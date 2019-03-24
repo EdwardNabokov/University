@@ -83,6 +83,11 @@ func ValidateXmlWithXsd(filenameXml string, filenameXsd string) (status int64) {
 		panic(err)
 	}
 
+	xsdBytes, err = ioutil.ReadFile(filenameXsd)
+	if err != nil {
+		panic(err)
+	}
+
 	xmlBytes, err := ioutil.ReadFile(filenameXml)
 	if err != nil {
 		panic(err)
