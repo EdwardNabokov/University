@@ -1,9 +1,0 @@
-display_name: Pillbox
-block: true
-cost: 280
-rotate: true
-flash_offset: 16
-attack: bullet
-attack_rate: 0.1
-attack_range: 200
-images: textures/defense/DefensePillbox.png

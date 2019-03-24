@@ -1,8 +1,0 @@
-display_name: Wall
-block: true
-cost: 25
-rotate: false
-attack: none
-image:
-  type: aimg
-  value: textures/map/BlockSmall.jpg
