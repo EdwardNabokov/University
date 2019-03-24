@@ -1,8 +1,6 @@
 package kpi.lab4.sleepy_barber;
 
-import java.io.ObjectInputStream;
 import java.util.LinkedList;
-import java.util.concurrent.Semaphore;
 
 public class WaitingRoom {
 
@@ -33,7 +31,6 @@ public class WaitingRoom {
                 status = true;
                 placesInWaitingRoom--;
                 Lock.notify();
-
             }
 
             return status;

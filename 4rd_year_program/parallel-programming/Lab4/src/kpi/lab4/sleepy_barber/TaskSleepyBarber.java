@@ -6,7 +6,6 @@ import java.util.List;
 public class TaskSleepyBarber {
 
     public void runTask() {
-
         WaitingRoom waitingRoom = new WaitingRoom();
 
         Barber barber = new Barber(waitingRoom);
