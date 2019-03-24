@@ -11,7 +11,6 @@ public class Reader extends Thread {
     }
 
     public void run() {
-
         System.out.println(name + " wants to read");
 
         String text;
@@ -21,6 +20,6 @@ public class Reader extends Thread {
             throw new RuntimeException(e);
         }
 
-        System.out.println("\n" + name + " read:" + text + "\n");
+        System.out.println(name + " read:" + text);
     }
 }
