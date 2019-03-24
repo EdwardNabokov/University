@@ -3,7 +3,6 @@ package kpi.lab4.sleepy_barber;
 public class Customer extends Thread {
 
     private String name;
-
     private WaitingRoom waitingRoom;
 
     public Customer(String name, WaitingRoom waitingRoom) {
