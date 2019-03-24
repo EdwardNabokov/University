@@ -32,7 +32,6 @@
                             </xs:element>
                             <xs:element type="xs:string" name="production"/>
                         </xs:sequence>
-                        <xs:attribute type="xs:byte" name="id" use="required"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
