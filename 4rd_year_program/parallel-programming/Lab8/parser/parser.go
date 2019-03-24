@@ -53,6 +53,22 @@ func ParseXml(filename string) Candies {
 	if err != nil {
 		panic(err)
 	}
+
+	for _, candy := range candies.Candy {
+		var flag = false
+		for _, ctype := range candy.Types {
+			if ctype != "chocolate" {
+				flag = true
+			}
+		}
+
+		for _, ingredient := range candy.Ingredients {
+			if !flag && strings.Contains(ingredient, "chocolate") {
+				panic("Incompatible: type is not chocolate, but have ingredient")
+			}
+		}
+	}
+
 	return candies
 }
 
