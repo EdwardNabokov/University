@@ -53,7 +53,6 @@ func ParseXml(filename string) Candies {
 	if err != nil {
 		panic(err)
 	}
-
 	return candies
 }
 
